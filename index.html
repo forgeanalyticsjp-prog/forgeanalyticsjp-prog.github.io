@@ -160,6 +160,42 @@ section { padding: 100px 5vw; }
 .project-image { border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
 .project-image img { width: 100%; display: block; }
 
+/* ── STORY FLOW ── */
+.story-block { margin-top: 2rem; }
+.story-heading {
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--sub);
+  margin-bottom: 1.2rem; letter-spacing: 0.02em;
+}
+.story-flow { display: flex; align-items: stretch; gap: 0; overflow-x: auto; padding-bottom: 4px; }
+.story-step { flex: 0 0 150px; text-align: center; }
+.story-step img {
+  width: 150px; height: 150px; object-fit: cover; object-position: center;
+  border-radius: 6px; border: 1px solid var(--border); display: block;
+}
+.story-arrow {
+  flex: 0 0 40px; display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-size: 1.2rem; align-self: center;
+}
+.story-num {
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+  margin: 0.7rem 0 0.2rem;
+}
+.story-label {
+  font-family: var(--font-head); font-size: 0.9rem; font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.story-sub { font-size: 0.78rem; color: var(--sub); }
+.story-result {
+  flex: 0 0 180px; background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 1rem 1.1rem; align-self: center;
+}
+.story-metrics { list-style: none; margin: 0.6rem 0; }
+.story-metrics li {
+  display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.4rem;
+}
+.story-metrics li span { color: var(--sub); }
+.story-metrics li strong { font-family: var(--font-mono); font-weight: 500; color: var(--text); }
+
 /* ── SERVICES ── */
 #services { background: var(--bg); }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -247,6 +283,10 @@ footer {
   .flow-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
 }
+@media (max-width: 700px) {
+  .story-flow { flex-wrap: wrap; justify-content: center; }
+  .story-arrow { transform: rotate(90deg); flex: 0 0 28px; }
+}
 @media (max-width: 500px) {
   .flow-grid { grid-template-columns: 1fr; }
   .contact-inner { padding: 2rem 1.5rem; }
@@ -308,6 +348,43 @@ footer {
     </div>
     <div class="project-image">
       <img src="examples/sample_A/panel_all_metrics.png" alt="SEM Analyzer 出力パネル">
+    </div>
+  </div>
+
+  <div class="story-block">
+    <p class="story-heading">▶ 解析の流れ — 元画像から数値まで</p>
+    <div class="story-flow">
+      <div class="story-step">
+        <img src="examples/sample_A/01_roi.png" alt="元画像" loading="lazy">
+        <p class="story-num">01</p>
+        <p class="story-label">元画像</p>
+        <p class="story-sub">SEM撮影画像</p>
+      </div>
+      <div class="story-arrow">→</div>
+      <div class="story-step">
+        <img src="examples/sample_A/02_dark_mask.png" alt="ラメラ検出" loading="lazy">
+        <p class="story-num">02</p>
+        <p class="story-label">ラメラ検出</p>
+        <p class="story-sub">Otsu二値化</p>
+      </div>
+      <div class="story-arrow">→</div>
+      <div class="story-step">
+        <img src="examples/sample_A/03_denuded_heatmap.png" alt="距離マップ" loading="lazy">
+        <p class="story-num">03</p>
+        <p class="story-label">距離マップ</p>
+        <p class="story-sub">空白域を可視化</p>
+      </div>
+      <div class="story-arrow">→</div>
+      <div class="story-result">
+        <p class="story-num">04</p>
+        <p class="story-label">結果</p>
+        <ul class="story-metrics">
+          <li><span>太さ</span><strong>0.299 µm</strong></li>
+          <li><span>間隔</span><strong>2.805 µm</strong></li>
+          <li><span>空白域</span><strong>0.2 %</strong></li>
+        </ul>
+        <p class="story-sub">CSV + パネル出力</p>
+      </div>
     </div>
   </div>
 </section>
